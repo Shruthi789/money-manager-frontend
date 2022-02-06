@@ -8,7 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import BasicTabs from './Tabs';
 import {API} from './APIInfo.js'
 
-const context=React.createContext({});
+const homeContext=React.createContext({});
 function Home(){
     return(<div><h1>Welcome to the Money Manager!!</h1>
         <br/>
@@ -22,7 +22,7 @@ function FormDialog() {
     const getCategories=()=>{
       fetch(`${API}/income/category`)
       .then((res)=>res.json())
-      .then((data)=>setCategoriesIncome(data))
+      .then((data)=>{console.log(data);setCategoriesIncome(data)})
       .catch((error)=>console.log(error));
     //   fetch(`${API}/expenditure/category`)
     //   .then((res)=>res.json())
@@ -53,7 +53,7 @@ function FormDialog() {
                                                rating:values.category,
                                                cast:values.division,
                                              };
-                                   fetch(`${API}/income/`,{
+                                   fetch(`${API}/income`,{
                                      method:'POST',
                                      headers:{
                                        'content-type':'application/json'
@@ -65,9 +65,9 @@ function FormDialog() {
                                       })
                                       .catch((error)=>console.log(error));
                                     };
-    const obj={categoriesIncome,submitHandler,initialValues};
+    const obj={categoriesIncome,submitHandler,initialValues,getCategories};
     return (
-    <context.Provider value={obj}>
+    <homeContext.Provider value={obj}>
       <div>
         <Button variant="contained" startIcon={<AddIcon/>} color="success" onClick={handleClickOpen}>
           ADD INCOME/EXPENSE
@@ -83,8 +83,8 @@ function FormDialog() {
           </DialogActions>
         </Dialog>
       </div>
-      </context.Provider>
+      </homeContext.Provider>
     );
   }
 
-export {Home,context};
+export {Home,homeContext};

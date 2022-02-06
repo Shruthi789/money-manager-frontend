@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import {context} from './Home.js';
+import {homeContext} from './Home.js';
 import {FormComponent} from './Form.js';
 
 function TabPanel(props) {
@@ -46,7 +46,7 @@ export default function BasicTabs() {
     setValue(newValue);
   };
   const labels=["Income","Expenditure"];
-  const {submitHandler,categoriesIncome,initialValues}=React.useContext(context);
+  const {submitHandler,categoriesIncome,initialValues}=React.useContext(homeContext);
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
