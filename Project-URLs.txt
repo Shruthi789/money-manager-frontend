@@ -1,4 +1,4 @@
-Hackathon project details (Money Manager):
+Project details (Money Manager):
 
 FrontEnd:
 GitHub:https://github.com/Shruthi789/money-manager-frontend.git
